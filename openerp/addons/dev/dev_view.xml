@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Views -->
+
+    <record model="ir.ui.view" id="dev_person_tree_view">
+        <field name="name">Person Details</field>
+        <field name="model">dev.person</field>
+        <!-- types: tree,form,calendar,search,graph,gantt,kanban -->
+        <field name="type">tree</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <tree string="Person Details">
+                <field name="person_name" />
+                <field name="age" />
+                <field name="date_of_joining" />
+                <field name="description" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="dev_person_form_view">
+        <field name="name">Person Form</field>
+        <field name="model">dev.person</field>
+        <!-- types: tree,form,calendar,search,graph,gantt,kanban -->
+        <field name="type">tree</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <form string="Person Details">
+                <field name="person_name" />
+                <field name="age" />
+                <field name="description" />
+            </form>
+        </field>
+    </record>
+
+    <!-- ACTIONS -->
+
+    <record model="ir.actions.act_window" id="action_dev_person_tree">
+        <field name="name">dev_person</field>
+        <field name="res_model">dev.person</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="dev_person_tree_view"/>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_dev_person_form">
+        <field name="name">Person Form</field>
+        <field name="res_model">dev.person</field>
+        <field name="view_mode">form,tree,form|tree</field>
+        <field name="view_id" ref="dev_person_form_view"/>
+        <field name="target">new</field>
+        <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                  Click here to create a Person.
+                </p>
+        </field>
+    </record>
+
+    <menuitem name="Dev" id="dev_menu"/>
+    <menuitem name="Form" id="dev-person_menu_form" parent="dev_menu" action="action_dev_person_form" sequence="1"/>
+    </data>
+</openerp>

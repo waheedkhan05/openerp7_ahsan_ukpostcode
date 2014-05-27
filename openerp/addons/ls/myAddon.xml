@@ -1,0 +1,22 @@
+<openerp>	
+	<record id="view_student_form" model="ir.ui.view">
+		<field name="name">student.det.student.view</field>
+		<field name="model">student.det</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+		<form string="Student Details">
+			<field name="name" select="1" />
+			<field name="dateofbirth" />
+		</form>
+		</field>
+	</record>
+	<menuitem id="base.next_id_172" name="Position" parent="base.menu_reporting" sequence="15" action="action_student_det"/>
+	<record id="action_student_det" model="ir.actions.act_window">
+		<field name="name">Student Information</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">student.det</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree, form</field>
+		<field name="view_id" ref="view_student_tree" />
+	</record>
+</openerp>

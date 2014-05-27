@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<record model="ir.actions.act_window" id="action_dev_person_form">
+<field name="name">Person</field>
+<field name="res_model">dev.person</field>
+</record>
+
+
+
+<menuitem name="Dev" icon="terp-project" id="dev_menu" />
+<menuitem name="Form" parent="dev_menu" id="dev_menu_person_form" action="action_dev_person_form" />
+<menuitem name="Tree Structure" parent="dev_menu" id="dev_person_tree_menu" action="action_dev_person_tree" />
+<menuitem name="Search" parent="dev_menu" id="dev_person_search_menu" action="action_person_search" />
+</data>
+</openerp>

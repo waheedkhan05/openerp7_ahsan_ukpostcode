@@ -1,0 +1,13 @@
+from osv import fields, osv
+
+class dev_person(osv.osv):
+    _name = "dev.person"
+    _description = "Person"
+    _columns = {
+        'person_name': fields.char('Name', size=128, required=True, help=""),
+	'age':fields.integer('Age',required=True),
+	'date_of_joining':fields.date('Invent date'),
+	'description':fields.text("Description"),
+    }
+
+dev_person()

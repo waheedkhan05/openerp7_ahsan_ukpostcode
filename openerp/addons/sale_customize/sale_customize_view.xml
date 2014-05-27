@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+    <record model="ir.ui.view" id="view_sale_order_form">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/group" position="after">
+                <h1>
+                        <label string="Equipment" attrs="{'invisible': [('state','not in',('draft','sent'))]}"/>
+                    </h1>
+                    <group>
+                        <group>
+                           <field name="x_equiptype" groups="base.group_no_one" widget="selection"/>
+                           <field name="x_equipmake"/>
+                           <field name="x_equipos"/><field name="x_equipserial" string="Serial"> </field>
+                        </group>
+                        <group>
+                            <field name="x_equipusername" string="Username"/>
+                            <field name="x_equippass"/>
+                            <field name="x_equipfault"/>
+                            <field name="x_equipaccessories"/>
+                        </group>
+                    </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_sale_order_tree">
+        <field name="name">sale.order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="x_equipusername" string="Username" /> 
+                <field name="x_equippass" string="Password" readonly="1" /> 
+                <field name="x_equipmake" string="Make"/>
+                <field name="x_equipaccessories" string="Accessories" />
+                <field name="x_equipos" string="OS" /> 
+                <field name="x_equiptype" string="Type"/>
+            </xpath>
+        </field>
+    </record>
+
+    </data>
+</openerp>
