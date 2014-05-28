@@ -7,10 +7,15 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
-            <xpath expr="/form/sheet/group//field[@name='country_id']" position="before">
-                <field name="postcode" class="oe_no_button" options='{"no_open": True}' attrs="{'readonly': [('use_parent_address','=',True)]}" placeholder="Post Code"  on_change="onchange_postcode(postcode)"/>
-                
+            <xpath expr="/form/sheet/group//field[@name='zip']" position="replace">
+                <field name="zip" class="oe_no_button" options='{"no_open": True}' attrs="{'readonly': [('use_parent_address','=',True)]}" domain="[('zip','ilike', self)]" placeholder="Post Code"  on_change="onchange_postcode(zip)"/>
             </xpath>
+            <field name='state_id' position="replace">
+                <field name="state_id" class="oe_no_button" options='{"no_open": True}' attrs="{'readonly': [('use_parent_address','=',True)]}" domain="[('state_id','ilike','name')]" placeholder="County" domain="[('state_id','ilike', self)]"  on_change="onchange_County(state_id)"/>
+            </field>
+            <!-- <xpath expr="/form/sheet/group//field[@name='state_id']" position="replace">
+                <field name="state_id" class="oe_no_button" options='{"no_open": True}' attrs="{'readonly': [('use_parent_address','=',True)]}" placeholder="County"  on_change="onchange_County(state_id)"/>
+            </xpath> -->
         </field>
     </record>
     </data>
